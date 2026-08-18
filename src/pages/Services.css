@@ -1,0 +1,142 @@
+/* =============================================================================
+   KULJETUSPALVELUT
+   ============================================================================= */
+
+.services-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border-block: 1px solid var(--line);
+}
+
+.service-block {
+  background: var(--bg);
+  padding: var(--space-l) 0;
+  transition: background-color var(--dur) var(--ease);
+}
+
+.service-block__number {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--c-signal-strong);
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+}
+
+.service-block__title {
+  margin-top: var(--space-s);
+  font-size: var(--fs-h3);
+  max-width: 16ch;
+}
+
+.service-block__text {
+  margin-top: 0.75rem;
+  max-width: 46ch;
+  color: var(--text-muted);
+}
+
+.service-block__points {
+  margin-top: var(--space-m);
+  display: grid;
+  gap: 0.5rem;
+}
+
+.service-block__points li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.service-block__points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 0.7rem;
+  height: 2px;
+  background: var(--c-signal-strong);
+}
+
+.services-note {
+  margin-top: var(--space-l);
+  padding: var(--space-m);
+  border-left: 3px solid var(--c-signal);
+  background: var(--c-signal-soft);
+}
+
+.services-note p {
+  max-width: 62ch;
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+}
+
+/* --- Prosessi --------------------------------------------------------------- */
+.process__list {
+  margin-top: var(--space-xl);
+  display: grid;
+  gap: var(--space-l);
+  counter-reset: step;
+}
+
+.process__step {
+  padding-top: var(--space-m);
+  border-top: 1px solid var(--line-dark);
+}
+
+.process__index {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: var(--space-s);
+  background: var(--c-signal);
+  color: var(--c-asphalt-900);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+}
+
+.process__title {
+  font-size: 1.125rem;
+}
+
+.process__text {
+  margin-top: 0.5rem;
+  max-width: 42ch;
+  color: var(--text-on-dark-muted);
+  font-size: var(--fs-small);
+}
+
+.process__scene {
+  margin-top: var(--space-xl);
+}
+
+.process__media {
+  width: min(24rem, 70%);
+  margin-inline: auto 0;
+  margin-bottom: -10px;
+  color: var(--c-paper);
+}
+
+@media (min-width: 48rem) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .service-block {
+    padding: var(--space-l) var(--space-m);
+  }
+
+  .service-block:first-child {
+    padding-left: 0;
+  }
+
+  .process__list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-m);
+  }
+}

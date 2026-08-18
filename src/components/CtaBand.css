@@ -1,0 +1,44 @@
+.cta-band {
+  position: relative;
+  background: var(--c-asphalt-800);
+  color: var(--text-on-dark);
+  padding-block: var(--space-xl);
+}
+
+.cta-band__rule {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--c-signal) 0 44px,
+    transparent 44px 76px
+  );
+}
+
+.cta-band__inner {
+  display: grid;
+  gap: var(--space-m);
+  align-items: center;
+}
+
+.cta-band__title {
+  font-size: var(--fs-h2);
+  max-width: 14em;
+}
+
+.cta-band__text {
+  margin-top: var(--space-s);
+  max-width: 46ch;
+  color: var(--text-on-dark-muted);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+
+@media (min-width: 56rem) {
+  .cta-band__inner {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xl);
+  }
+}

@@ -1,0 +1,44 @@
+.road {
+  position: relative;
+  height: clamp(64px, 11vw, 104px);
+  background: var(--c-asphalt-700);
+  border-top: 3px solid var(--c-asphalt-600);
+  overflow: hidden;
+}
+
+.road--slim {
+  height: clamp(44px, 7vw, 64px);
+  background: var(--c-asphalt-800);
+  border-top-color: var(--c-asphalt-600);
+}
+
+/* Liikkuva keskiviiva */
+.road__markings {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 200%;
+  height: 6px;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(
+    to right,
+    var(--c-signal) 0 56px,
+    transparent 56px 112px
+  );
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .road__markings {
+    animation: road-scroll 2.6s linear infinite;
+  }
+}
+
+@keyframes road-scroll {
+  from {
+    transform: translate(0, -50%);
+  }
+  to {
+    transform: translate(-112px, -50%);
+  }
+}

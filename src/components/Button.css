@@ -1,0 +1,115 @@
+.btn {
+  --btn-py: 0.9rem;
+  --btn-px: 1.5rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  /* Kosketuskohde vähintään 48 px korkea */
+  min-height: 3rem;
+  padding: var(--btn-py) var(--btn-px);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  /* Painikkeet ovat tunnuksen äänellä: Archivon lihava leikkaus on
+     kulmikas ja jämäkkä, kuten JUMPPANEN-sanamerkki. */
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.btn__arrow {
+  display: inline-flex;
+  transition: transform var(--dur) var(--ease);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* --- Ensisijainen: huomioväri ------------------------------------------- */
+.btn--primary {
+  background: var(--c-signal);
+  border-color: var(--c-signal);
+  color: var(--c-asphalt-900);
+}
+
+.btn--primary:hover {
+  background: var(--c-signal-strong);
+  border-color: var(--c-signal-strong);
+}
+
+/* --- Toissijainen: ääriviiva vaalealla taustalla -------------------------- */
+.btn--secondary {
+  background: transparent;
+  border-color: var(--c-asphalt-900);
+  color: var(--c-asphalt-900);
+}
+
+.btn--secondary:hover {
+  background: var(--c-asphalt-900);
+  color: var(--c-paper);
+}
+
+/* --- Toissijainen tummalla taustalla ------------------------------------- */
+.btn--ghost {
+  background: transparent;
+  border-color: rgba(245, 243, 239, 0.35);
+  color: var(--c-paper);
+}
+
+.btn--ghost:hover {
+  background: var(--c-paper);
+  border-color: var(--c-paper);
+  color: var(--c-asphalt-900);
+}
+
+/* --- Koot ----------------------------------------------------------------- */
+.btn--lg {
+  --btn-py: 1.1rem;
+  --btn-px: 2rem;
+  min-height: 3.5rem;
+  font-size: 1rem;
+}
+
+.btn--sm {
+  --btn-py: 0.6rem;
+  --btn-px: 1.1rem;
+  min-height: 2.75rem;
+  font-size: 0.875rem;
+}
+
+.btn--sm .btn__arrow {
+  display: none;
+}
+
+/* Painikeryhmä */
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+}
+
+@media (max-width: 24rem) {
+  /* Kapeilla puhelimilla painikkeet omille riveilleen koko leveydeltä */
+  .btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-row .btn {
+    width: 100%;
+  }
+}

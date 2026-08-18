@@ -1,0 +1,173 @@
+/* =============================================================================
+   YRITYS
+   ============================================================================= */
+
+.company-intro__inner {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.company-intro__text {
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+
+.company-intro__text h2 {
+  color: var(--text);
+  font-size: var(--fs-h2);
+  margin-bottom: 0.6em;
+}
+
+/* --- Yrittäjäkortti --------------------------------------------------------- */
+.person-card {
+  position: relative;
+  padding: var(--space-l) var(--space-m) var(--space-m);
+  background: var(--c-asphalt-900);
+  color: var(--text-on-dark);
+  border-top: 4px solid var(--c-signal);
+}
+
+.person-card__mark {
+  position: absolute;
+  top: var(--space-m);
+  right: var(--space-m);
+  width: 2.5rem;
+  height: 3px;
+  background: var(--c-signal);
+}
+
+.person-card__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.person-card__role {
+  margin-top: 0.35rem;
+  color: var(--c-signal);
+  font-size: var(--fs-small);
+  font-weight: 600;
+}
+
+.person-card__rule {
+  margin-block: var(--space-m);
+  border: 0;
+  border-top: 1px solid var(--line-dark);
+}
+
+.person-card__note {
+  color: var(--text-on-dark-muted);
+  font-size: var(--fs-small);
+}
+
+/* --- Toimintatapa ----------------------------------------------------------- */
+.values-list {
+  margin-top: var(--space-xl);
+  display: grid;
+  gap: 1px;
+  background: var(--line-dark);
+  border-block: 1px solid var(--line-dark);
+}
+
+.values-item {
+  background: var(--c-asphalt-900);
+  padding: var(--space-m) 0;
+}
+
+.values-item__title {
+  font-size: 1.125rem;
+}
+
+.values-item__title::before {
+  content: '';
+  display: block;
+  width: 1.5rem;
+  height: 3px;
+  margin-bottom: var(--space-s);
+  background: var(--c-signal);
+}
+
+.values-item__text {
+  margin-top: 0.5rem;
+  max-width: 40ch;
+  color: var(--text-on-dark-muted);
+  font-size: var(--fs-small);
+}
+
+.company-values__scene {
+  margin-top: var(--space-xl);
+  display: flex;
+  justify-content: center;
+}
+
+.company-values__media {
+  width: min(26rem, 78%);
+  color: var(--c-paper);
+  opacity: 0.9;
+}
+
+/* --- Yritystiedot ----------------------------------------------------------- */
+.details-list {
+  margin-top: var(--space-l);
+  border-top: 1px solid var(--line);
+}
+
+.details-row {
+  display: grid;
+  gap: 0.15rem;
+  padding-block: var(--space-s);
+  border-bottom: 1px solid var(--line);
+}
+
+.details-row dt {
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.details-row dd {
+  margin: 0;
+  font-weight: 600;
+  /* Y-tunnus, ALV-numero ja päivämäärät pysyvät sarakkeessa suorassa */
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 48rem) {
+  .details-row {
+    grid-template-columns: 14rem 1fr;
+    gap: var(--space-m);
+    align-items: baseline;
+  }
+}
+
+@media (min-width: 56rem) {
+  .company-intro__inner {
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: var(--space-2xl);
+  }
+
+  .values-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .values-item {
+    padding: var(--space-l) var(--space-l) var(--space-l) 0;
+  }
+}
+
+@media (min-width: 75rem) {
+  .values-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .values-item {
+    padding-right: var(--space-m);
+  }
+}

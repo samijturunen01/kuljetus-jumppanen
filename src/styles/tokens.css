@@ -1,0 +1,95 @@
+/* =============================================================================
+   KULJETUS JUMPPANEN OY – visuaaliset perusarvot
+   Väri-inspiraatio: asfaltti, tienpinta, tiemerkinnät, pohjoiskarjalainen talvi.
+   ============================================================================= */
+
+:root {
+  /* --- Neutraalit: asfaltti --------------------------------------------- */
+  --c-asphalt-900: #101215;
+  --c-asphalt-800: #161a1f;
+  --c-asphalt-700: #1e232a;
+  --c-asphalt-600: #2a3038;
+  --c-asphalt-500: #3a424c;
+  --c-asphalt-400: #5b646f;
+
+  /* --- Neutraalit: valoisa puoli ---------------------------------------- */
+  --c-paper: #f5f3ef;
+  --c-paper-dim: #e8e5df;
+  --c-paper-line: #d9d5cd;
+
+  /* --- Tehoväri: tiemerkintä / huomioväri ------------------------------- */
+  --c-signal: #ffc233;
+  --c-signal-strong: #f0ad10;
+  --c-signal-soft: rgba(255, 194, 51, 0.14);
+
+  /* --- Semanttiset roolit ----------------------------------------------- */
+  --bg: var(--c-paper);
+  --bg-dark: var(--c-asphalt-900);
+  --text: var(--c-asphalt-900);
+  --text-muted: #5a6069;
+  --text-on-dark: var(--c-paper);
+  --text-on-dark-muted: #a9b1bb;
+  /* Vaimein tummalla taustalla käytettävä tekstiväri.
+     Vaalennettu tarkoituksella: täyttää WCAG AA -kontrastin (4.5:1)
+     sekä --c-asphalt-900- että --c-asphalt-800-taustaa vasten.
+     --c-asphalt-400 on rakenneväri, ei tekstiväri. */
+  --text-on-dark-dim: #949ca6;
+  --line: var(--c-paper-line);
+  --line-dark: rgba(245, 243, 239, 0.14);
+  --accent: var(--c-signal);
+  --accent-ink: var(--c-asphalt-900);
+
+  /* --- Typografia -------------------------------------------------------- */
+  /* Kaksi kirjasinta, molemmat matalan kontrastin groteskeja – sama sukulinja
+     kuin yrityksen tunnuksessa. Katso perustelut: src/styles/fonts.css
+
+     --font-display  Archivo. Lihava, kulmikas ja tiivis versaaleilla, kuten
+                     tunnuksen JUMPPANEN-sanamerkki. Otsikot, painikkeet,
+                     navigaatio, pienet versaalitarrat.
+     --font-sans     Barlow. Rauhallisempi ja avoimempi – leipätekstin
+                     luettavuus säilyy pitkissäkin kappaleissa. */
+  --font-display:
+    'Archivo', 'Archivo Narrow', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-sans:
+    'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue',
+    Arial, 'Noto Sans', sans-serif;
+
+  /* Nestemäinen typografia-asteikko */
+  --fs-display: clamp(2.5rem, 1.5rem + 4.6vw, 5rem);
+  --fs-h1: clamp(2.25rem, 1.35rem + 4vw, 4.5rem);
+  --fs-h2: clamp(1.75rem, 1.2rem + 2.4vw, 3rem);
+  --fs-h3: clamp(1.25rem, 1.05rem + 0.9vw, 1.6rem);
+  --fs-lead: clamp(1.0625rem, 0.98rem + 0.5vw, 1.375rem);
+  --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --fs-small: 0.9375rem;
+  --fs-eyebrow: 0.75rem;
+
+  /* --- Rytmi ------------------------------------------------------------- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-s: 0.875rem;
+  --space-m: 1.5rem;
+  --space-l: 2.5rem;
+  --space-xl: clamp(3rem, 6vw, 5rem);
+  --space-2xl: clamp(4rem, 9vw, 8rem);
+
+  --container: 78rem;
+  --container-narrow: 46rem;
+  --gutter: clamp(1.25rem, 5vw, 3.5rem);
+
+  /* --- Muoto -------------------------------------------------------------- */
+  /* Tarkoituksellisen suoralinjainen: hyvin vähän pyöristystä. */
+  --radius: 2px;
+  --radius-lg: 3px;
+  --border: 1px solid var(--line);
+
+  /* --- Liike -------------------------------------------------------------- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 140ms;
+  --dur: 260ms;
+  --dur-slow: 700ms;
+
+  --focus-ring: 3px solid var(--c-signal);
+  --focus-offset: 3px;
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Kuljetus Jumppanen Oy</title>
+    <script>
+      /*
+       * GitHub Pages ei tunne yksisivusovelluksen reittejä, joten suora
+       * osoite (esim. /yritys) päätyy tänne. Tallennetaan alkuperäinen
+       * osoite ja ohjataan sovelluksen juureen, jossa index.html palauttaa
+       * osoitteen. Näin sivun päivittäminen ei riko sivustoa.
+       *
+       * pathSegmentsToKeep:
+       *   0 = oma verkkotunnus tai kayttaja.github.io  (oletus)
+       *   1 = projektisivu, esim. kayttaja.github.io/repo/
+       *       (aseta tällöin myös VITE_BASE=/repo/ käännöksessä)
+       */
+      ;(function () {
+        var pathSegmentsToKeep = 1
+        var l = window.location
+        var base =
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/'
+
+        try {
+          sessionStorage.setItem('kj:redirect', l.href)
+        } catch (e) {
+          /* Yksityinen selaustila: ohjataan silti etusivulle. */
+        }
+
+        l.replace(l.origin + base)
+      })()
+    </script>
+  </head>
+  <body>
+    <p>Ohjataan…</p>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+/* Korkeus ohjaa kokoa, leveys seuraa mittasuhdetta.
+   `height` eikä `block-size`, jotta global.css:n `img { height: auto }`
+   ei jää voimaan. Käyttöpaikka säätää kokoa muuttujalla --logo-h. */
+.logo {
+  display: block;
+  flex: none;
+  height: var(--logo-h, 40px);
+  width: auto;
+  max-width: 100%;
+}

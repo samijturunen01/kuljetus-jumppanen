@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samijturunen01.github.io/kuljetus-jumppanen/sitemap.xml

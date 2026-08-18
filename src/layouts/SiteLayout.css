@@ -1,0 +1,15 @@
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.site__main {
+  flex: 1 0 auto;
+}
+
+/* Ohjelmallinen kohdistus ei saa piirtää ääriviivaa */
+.site__main:focus {
+  outline: none;
+}

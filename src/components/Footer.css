@@ -1,0 +1,119 @@
+.site-footer {
+  position: relative;
+  background: var(--c-asphalt-900);
+  color: var(--text-on-dark);
+  padding-top: var(--space-xl);
+}
+
+/* Tiemerkintäraita ylös */
+.site-footer__stripe {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--c-signal) 0 44px,
+    transparent 44px 76px
+  );
+}
+
+.site-footer__inner {
+  display: grid;
+  gap: var(--space-l);
+  padding-bottom: var(--space-xl);
+}
+
+.site-footer__brand {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: start;
+}
+
+.site-footer__logo {
+  --logo-h: 48px;
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 40rem) {
+  .site-footer__logo {
+    --logo-h: 56px;
+  }
+}
+
+.site-footer__tagline {
+  color: var(--text-on-dark-muted);
+  font-size: var(--fs-small);
+}
+
+.site-footer__heading {
+  margin-bottom: var(--space-s);
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-signal);
+}
+
+.site-footer__address {
+  font-style: normal;
+  color: var(--text-on-dark-muted);
+  line-height: 1.8;
+  font-variant-numeric: tabular-nums;
+}
+
+.site-footer__address a {
+  color: var(--c-paper);
+  text-decoration-color: var(--c-signal);
+}
+
+.site-footer__meta {
+  margin-top: var(--space-s);
+  color: var(--text-on-dark-dim);
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+}
+
+.site-footer__links {
+  display: grid;
+  gap: 0.1rem;
+}
+
+/* Riittävä kosketuskohde myös mobiilissa (vähintään 44 px) */
+.site-footer__links a {
+  display: inline-block;
+  padding-block: 0.7rem;
+  color: var(--text-on-dark-muted);
+  font-size: var(--fs-small);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.site-footer__links a:hover {
+  color: var(--c-signal);
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-m);
+  justify-content: space-between;
+  padding-block: var(--space-m);
+  border-top: 1px solid var(--line-dark);
+  color: var(--text-on-dark-dim);
+  font-size: 0.875rem;
+}
+
+@media (min-width: 40rem) {
+  .site-footer__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl) var(--space-l);
+  }
+}
+
+@media (min-width: 62rem) {
+  .site-footer__inner {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}

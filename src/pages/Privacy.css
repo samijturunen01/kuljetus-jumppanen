@@ -1,0 +1,18 @@
+.privacy {
+  color: var(--text-muted);
+}
+
+.privacy h2 {
+  color: var(--text);
+}
+
+.privacy__updated {
+  margin-bottom: var(--space-l);
+  padding-bottom: var(--space-s);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}

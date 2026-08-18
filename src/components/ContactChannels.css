@@ -1,0 +1,64 @@
+.channels {
+  display: grid;
+  gap: var(--space-m);
+}
+
+.channels__item {
+  display: grid;
+  gap: 0.2rem;
+  padding-block: var(--space-s);
+  border-top: 1px solid var(--line);
+}
+
+.channels__label {
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Puhelinnumero ja sähköposti ovat sivuston tärkeimmät yksittäiset tiedot –
+   ne latoraan otsikkokirjasimella ja tasalevyisillä numeroilla. */
+.channels__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  /* Pitkä sähköpostiosoite ei saa venyttää asettelua kapealla näytöllä */
+  overflow-wrap: anywhere;
+  border-bottom: 2px solid var(--c-signal);
+  justify-self: start;
+}
+
+.channels__value:hover {
+  background: var(--c-signal-soft);
+}
+
+.channels--pending {
+  padding: var(--space-m);
+  border-left: 3px solid var(--c-signal);
+  background: var(--c-signal-soft);
+}
+
+.channels__pending-text {
+  max-width: 40ch;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+/* Tumma tausta */
+.channels--dark .channels__item {
+  border-top-color: var(--line-dark);
+}
+
+.channels--dark .channels__label {
+  color: var(--text-on-dark-muted);
+}
+
+.channels--dark .channels__pending-text {
+  color: var(--text-on-dark-muted);
+}
