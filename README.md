@@ -121,17 +121,32 @@ Repossa on valmis työnkulku `.github/workflows/deploy.yml`, joka rakentaa ja
 julkaisee sivuston `main`-haaraan tehdyistä muutoksista. Ota Pages käyttöön
 repon asetuksista: **Settings → Pages → Source: GitHub Actions**.
 
-### Oma verkkotunnus tai kayttaja.github.io
+### Nykyinen kokoonpano: projektisivu
 
-Toimii sellaisenaan. Oma verkkotunnus: lisää `public/CNAME`, jossa on pelkkä
-verkkotunnus.
+Sivusto julkaistaan osoitteessa
+**https://samijturunen01.github.io/kuljetus-jumppanen/**, ja repo on
+konfiguroitu sitä varten:
 
-### Projektisivu (kayttaja.github.io/repo/)
+| Missä | Asetus |
+| --- | --- |
+| `.github/workflows/deploy.yml` | `VITE_BASE: /kuljetus-jumppanen/` |
+| `public/404.html` | `pathSegmentsToKeep = 1` |
+| `src/config/site.js` | `siteUrl` julkaisuosoitteeseen |
+| `public/sitemap.xml`, `public/robots.txt` | samat osoitteet |
+| `public/site.webmanifest` | `start_url`, `scope` ja kuvakkeet base-polulla |
+| `index.html` | canonical, Open Graph ja rakenteinen data |
 
-Kaksi muutosta:
+Reitityksen `basename` tulee automaattisesti Viten `BASE_URL`-arvosta
+(`src/App.jsx`), joten sovelluskoodiin ei tarvitse koskea.
 
-1. Aseta build-vaiheeseen ympäristömuuttuja `VITE_BASE=/repo/`
-2. Muuta `public/404.html`-tiedostossa `pathSegmentsToKeep` arvoon `1`
+### Vaihto omaan verkkotunnukseen (esim. kuljetusjumppanen.fi)
+
+1. Lisää `public/CNAME`, jossa on pelkkä verkkotunnus
+2. Poista `VITE_BASE` työnkulusta (`deploy.yml`)
+3. Palauta `public/404.html`:ssä `pathSegmentsToKeep` arvoon `0`
+4. Palauta `public/site.webmanifest`:ssa `start_url`, `scope` ja kuvakepolut
+   juureen (`/`)
+5. Vaihda osoitteet yllä olevan taulukon muista tiedostoista
 
 ### Reititys ja sivun päivittäminen
 
