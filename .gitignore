@@ -11,3 +11,6 @@ yarn-error.log*
 
 # Paikalliset työkaluasetukset
 .claude/settings.local.json
+
+# Valokuvien pakkaamattomat alkuperäiset (webp-versiot ovat src/assets/)
+kuvat-alkuperaiset/

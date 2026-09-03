@@ -2,6 +2,7 @@
 export const navigation = [
   { label: 'Etusivu', path: '/' },
   { label: 'Kuljetuspalvelut', path: '/kuljetuspalvelut' },
+  { label: 'Hinnasto', path: '/hinnasto' },
   { label: 'Yritys', path: '/yritys' },
   { label: 'Yhteystiedot', path: '/yhteystiedot' },
 ]

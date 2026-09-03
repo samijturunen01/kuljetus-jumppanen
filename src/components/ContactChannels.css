@@ -30,18 +30,18 @@
   text-decoration: none;
   /* Pitkä sähköpostiosoite ei saa venyttää asettelua kapealla näytöllä */
   overflow-wrap: anywhere;
-  border-bottom: 2px solid var(--c-signal);
+  border-bottom: 2px solid var(--c-brand);
   justify-self: start;
 }
 
 .channels__value:hover {
-  background: var(--c-signal-soft);
+  background: var(--c-brand-soft);
 }
 
 .channels--pending {
   padding: var(--space-m);
-  border-left: 3px solid var(--c-signal);
-  background: var(--c-signal-soft);
+  border-left: 3px solid var(--c-brand);
+  background: var(--c-brand-soft);
 }
 
 .channels__pending-text {

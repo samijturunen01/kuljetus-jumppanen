@@ -1,0 +1,255 @@
+/* =============================================================================
+   TARKISTA KULJETUKSEN HINTA
+   Sama suoralinjainen ilme kuin muualla sivustolla: terävät kulmat,
+   Archivo painikkeissa, sininen vain valinnassa ja korostuksissa.
+   ============================================================================= */
+
+.price-checker {
+  padding: var(--space-l) var(--space-m);
+  background: var(--c-white);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--c-brand);
+  border-radius: var(--radius-lg);
+}
+
+.price-checker__title {
+  font-size: var(--fs-h2);
+}
+
+.price-checker__lead {
+  margin-top: var(--space-s);
+  max-width: 46ch;
+  color: var(--text-muted);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+
+.price-checker__body {
+  margin-top: var(--space-l);
+  display: grid;
+  gap: var(--space-m);
+  align-items: start;
+}
+
+.price-checker__choices {
+  display: grid;
+  gap: var(--space-m);
+}
+
+/* --- Valintaryhmä ---------------------------------------------------------- */
+.pc-group {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.pc-group__legend {
+  padding: 0;
+  margin-bottom: var(--space-s);
+  color: var(--c-brand-strong);
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pc-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+/* Painoluokat ovat kaksirivisiä – tasakokoinen ruudukko pitää rivit siisteinä */
+.pc-options--weight {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+}
+
+/* --- Yksittäinen valintapainike -------------------------------------------- */
+.pc-option {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Natiivi radio piilotetaan, mutta se pysyy kohdistettavana */
+.pc-option__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pc-option__face {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+  /* Kosketuskohde vähintään 48 px korkea */
+  min-height: 3rem;
+  height: 100%;
+  padding: 0.7rem 1.1rem;
+  background: var(--c-white);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.pc-option__title {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.pc-option__hint {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+/* --- Tilat ----------------------------------------------------------------- */
+.pc-option__face:hover {
+  border-color: var(--c-asphalt-900);
+}
+
+.pc-option__face:active {
+  transform: translateY(1px);
+}
+
+.pc-option__input:focus-visible + .pc-option__face {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+.pc-option__input:checked + .pc-option__face {
+  background: var(--c-brand);
+  border-color: var(--c-brand);
+  color: var(--accent-ink);
+}
+
+.pc-option__input:checked + .pc-option__face:hover {
+  background: var(--c-brand-strong);
+  border-color: var(--c-brand-strong);
+}
+
+.pc-option__input:checked + .pc-option__face .pc-option__hint {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* --- Valintojen tyhjennys --------------------------------------------------- */
+.pc-reset {
+  justify-self: start;
+  padding: 0.35rem 0;
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--c-brand);
+  cursor: pointer;
+}
+
+.pc-reset:hover {
+  color: var(--text);
+}
+
+/* --- Tulospaneeli: musta kortti sinisellä korostuksella ---------------------- */
+.pc-result {
+  padding: var(--space-m);
+  background: var(--c-asphalt-900);
+  color: var(--text-on-dark);
+  border-top: 4px solid var(--c-brand);
+  border-radius: var(--radius-lg);
+}
+
+.pc-result__label {
+  color: var(--c-brand-bright);
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pc-result__price {
+  margin-top: var(--space-s);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 1.8rem + 3vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* "Alkaen 100 €" on pidempi rivi kuin pelkkä hinta */
+.pc-result__price--from {
+  font-size: clamp(1.75rem, 1.3rem + 2vw, 2.5rem);
+}
+
+.pc-result__vat {
+  margin-top: var(--space-xs);
+  color: var(--c-white);
+  font-family: var(--font-display);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pc-result__explanation {
+  margin-top: var(--space-m);
+  padding-top: var(--space-m);
+  border-top: 1px solid var(--line-dark);
+  color: var(--text-on-dark-muted);
+  line-height: 1.6;
+}
+
+.pc-result__placeholder {
+  margin-top: var(--space-s);
+  color: var(--text-on-dark-muted);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  max-width: 26ch;
+}
+
+/* =============================================================================
+   Suuremmat näytöt
+   ============================================================================= */
+@media (min-width: 34rem) {
+  .pc-option {
+    flex: 0 1 auto;
+  }
+}
+
+@media (min-width: 48rem) {
+  .price-checker {
+    padding: var(--space-l);
+  }
+}
+
+@media (min-width: 56rem) {
+  .price-checker__body {
+    grid-template-columns: minmax(0, 1.35fr) minmax(17rem, 1fr);
+    gap: var(--space-l);
+  }
+
+  .pc-result {
+    padding: var(--space-l) var(--space-m);
+  }
+}

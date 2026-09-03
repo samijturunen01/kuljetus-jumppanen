@@ -1,7 +1,7 @@
 import Seo from '../components/Seo.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Media from '../components/Media.jsx'
-import VanGraphic from '../components/VanGraphic.jsx'
+import VehicleGraphic from '../components/VehicleGraphic.jsx'
 import Road from '../components/Road.jsx'
 import CtaBand from '../components/CtaBand.jsx'
 import PageHeader from '../components/PageHeader.jsx'
@@ -29,7 +29,7 @@ export default function Services() {
     <>
       <Seo
         title="Kuljetuspalvelut Joensuussa"
-        description="Kuljetus Jumppanen Oy hoitaa tavarankuljetukset pakettiautolla Joensuussa. Sovimme kuljetuksen yksityiskohdat aina asiakkaan tarpeen mukaan."
+        description="Kuljetus Jumppanen Oy hoitaa tavarankuljetukset lava-autolla Joensuussa. Sovimme kuljetuksen yksityiskohdat aina asiakkaan tarpeen mukaan."
         path="/kuljetuspalvelut"
         jsonLd={breadcrumbSchema([
           { label: 'Etusivu', path: '/' },
@@ -39,8 +39,8 @@ export default function Services() {
 
       <PageHeader
         eyebrow="Kuljetuspalvelut"
-        title="Tavarankuljetukset pakettiautolla"
-        lead="Hoidamme tieliikenteen tavarankuljetuksia pakettiautolla. Kuljetuksen sisältö, aikataulu ja hinta sovitaan aina asiakkaan kanssa etukäteen."
+        title="Tavarankuljetukset lava-autolla"
+        lead="Hoidamme tieliikenteen tavarankuljetuksia lava-autolla. Kuljetuksen sisältö, aikataulu ja hinta sovitaan aina asiakkaan kanssa etukäteen."
       />
 
       {/* --- Palvelut --- */}
@@ -72,7 +72,7 @@ export default function Services() {
           <Reveal className="services-note">
             <p>
               Palvelukuvaukset tarkentuvat toiminnan käynnistyessä. Jos et ole varma,
-              sopiiko kuljetus pakettiautolla hoidettavaksi, kysy rohkeasti – katsotaan
+              sopiiko kuljetus lava-autolla hoidettavaksi, kysy rohkeasti – katsotaan
               asia yhdessä.
             </p>
           </Reveal>
@@ -105,7 +105,7 @@ export default function Services() {
             <Media
               name="services"
               className="process__media"
-              fallback={<VanGraphic />}
+              fallback={<VehicleGraphic />}
             />
             <Road slim />
           </div>

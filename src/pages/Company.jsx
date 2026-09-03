@@ -1,13 +1,22 @@
 import Seo from '../components/Seo.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Media from '../components/Media.jsx'
-import VanGraphic from '../components/VanGraphic.jsx'
+import VehicleGraphic from '../components/VehicleGraphic.jsx'
 import CtaBand from '../components/CtaBand.jsx'
 import PageHeader from '../components/PageHeader.jsx'
-import { business, addressOneLine } from '../config/business.js'
+import { business, addressOneLine, hasEmail, hasPhone } from '../config/business.js'
 import { promises } from '../data/services.js'
 import { breadcrumbSchema } from '../lib/structuredData.js'
 import './Company.css'
+
+/** Galleria vasemmalta oikealle, ylhäältä alas – kuvat ks. src/data/media.js.
+ *  `portrait` rajaa pystykuvan niin, että henkilö pysyy kuva-alassa. */
+const gallery = [
+  { name: 'owner', portrait: true },
+  { name: 'truckSide' },
+  { name: 'truckFront' },
+  { name: 'truckLogo' },
+]
 
 export default function Company() {
   const details = [
@@ -17,13 +26,32 @@ export default function Company() {
     { label: 'Kotipaikka', value: business.address.city },
     { label: 'Toimiala', value: business.industry },
     { label: 'Toimitusjohtaja', value: business.owner.name },
+    { label: 'Osoite', value: addressOneLine },
+    ...(hasPhone
+      ? [
+          {
+            label: 'Puhelin',
+            value: business.contact.phone.display,
+            href: `tel:${business.contact.phone.href}`,
+          },
+        ]
+      : []),
+    ...(hasEmail
+      ? [
+          {
+            label: 'Sähköposti',
+            value: business.contact.email,
+            href: `mailto:${business.contact.email}`,
+          },
+        ]
+      : []),
   ]
 
   return (
     <>
       <Seo
         title="Yritys"
-        description="Kuljetus Jumppanen Oy on kesäkuussa 2026 perustettu joensuulainen kuljetusyritys. Yrittäjä Roope Jumppanen hoitaa tavarankuljetukset omalla pakettiautollaan."
+        description="Kuljetus Jumppanen Oy on kesäkuussa 2026 perustettu joensuulainen kuljetusyritys. Yrittäjä Roope Jumppanen hoitaa tavarankuljetukset omalla lava-autollaan."
         path="/yritys"
         jsonLd={breadcrumbSchema([
           { label: 'Etusivu', path: '/' },
@@ -45,7 +73,7 @@ export default function Company() {
             <p>
               {business.name} on {business.foundingText} perustettu joensuulainen
               yritys. Toimialana on tieliikenteen tavarankuljetus: hoidamme tavaroiden
-              kuljetuksia pakettiautolla.
+              kuljetuksia lava-autolla.
             </p>
             <p>
               Yrityksen takana on {business.owner.name}. Hän vastaa yrityksen
@@ -59,16 +87,79 @@ export default function Company() {
           </Reveal>
 
           <Reveal className="company-intro__aside" delay={120}>
-            <div className="person-card">
-              <span className="person-card__mark" aria-hidden="true" />
-              <p className="person-card__name">{business.owner.name}</p>
-              <p className="person-card__role">{business.owner.title}</p>
-              <hr className="person-card__rule" />
-              <p className="person-card__note">
-                Kuljetukset hoidetaan yrityksen omalla pakettiautolla.
+            <div className="principle">
+              <p className="principle__lead">
+                Sovitaan kuljetuksesta selkeästi ja hoidetaan se sitten sovitusti.
               </p>
+              <dl className="principle__facts">
+                <div>
+                  <dt>Yrittäjä</dt>
+                  <dd>{business.owner.name}</dd>
+                </div>
+                <div>
+                  <dt>Kotipaikka</dt>
+                  <dd>{business.address.city}</dd>
+                </div>
+                <div>
+                  <dt>Perustettu</dt>
+                  <dd>2026</dd>
+                </div>
+                {hasPhone && (
+                  <div>
+                    <dt>Puhelin</dt>
+                    <dd>
+                      <a
+                        className="principle__link"
+                        href={`tel:${business.contact.phone.href}`}
+                      >
+                        {business.contact.phone.display}
+                      </a>
+                    </dd>
+                  </div>
+                )}
+                {hasEmail && (
+                  <div>
+                    <dt>Sähköposti</dt>
+                    <dd>
+                      <a
+                        className="principle__link"
+                        href={`mailto:${business.contact.email}`}
+                      >
+                        {business.contact.email}
+                      </a>
+                    </dd>
+                  </div>
+                )}
+              </dl>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* --- Kuvat --- */}
+      <section className="section section--tint company-gallery" aria-labelledby="gallery-title">
+        <div className="container">
+          <Reveal>
+            <p className="eyebrow">Kuvat</p>
+            <h2 id="gallery-title" className="section-title">
+              Auto ja kuljettaja
+            </h2>
+          </Reveal>
+
+          <ul className="gallery-grid">
+            {gallery.map((item, index) => (
+              <Reveal as="li" className="gallery-grid__item" key={item.name} delay={index * 70}>
+                <Media
+                  name={item.name}
+                  className={
+                    item.portrait
+                      ? 'gallery-grid__media gallery-grid__media--portrait'
+                      : 'gallery-grid__media'
+                  }
+                />
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -92,7 +183,7 @@ export default function Company() {
           </ul>
 
           <div className="company-values__scene" aria-hidden="true">
-            <Media name="company" className="company-values__media" fallback={<VanGraphic />} />
+            <Media name="company" className="company-values__media" fallback={<VehicleGraphic />} />
           </div>
         </div>
       </section>
@@ -112,13 +203,17 @@ export default function Company() {
               {details.map((row) => (
                 <div className="details-row" key={row.label}>
                   <dt>{row.label}</dt>
-                  <dd>{row.value}</dd>
+                  <dd>
+                    {row.href ? (
+                      <a className="details-row__link" href={row.href}>
+                        {row.value}
+                      </a>
+                    ) : (
+                      row.value
+                    )}
+                  </dd>
                 </div>
               ))}
-              <div className="details-row">
-                <dt>Osoite</dt>
-                <dd>{addressOneLine}</dd>
-              </div>
             </dl>
           </Reveal>
         </div>

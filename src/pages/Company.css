@@ -19,48 +19,79 @@
   margin-bottom: 0.6em;
 }
 
-/* --- Yrittäjäkortti --------------------------------------------------------- */
-.person-card {
+/* --- Toimintaperiaate ja perustiedot (sama kortti kuin aiemmin etusivulla) --- */
+.principle {
   position: relative;
   padding: var(--space-l) var(--space-m) var(--space-m);
   background: var(--c-asphalt-900);
   color: var(--text-on-dark);
-  border-top: 4px solid var(--c-signal);
+  border-top: 4px solid var(--c-brand);
 }
 
-.person-card__mark {
-  position: absolute;
-  top: var(--space-m);
-  right: var(--space-m);
-  width: 2.5rem;
-  height: 3px;
-  background: var(--c-signal);
-}
-
-.person-card__name {
+.principle__lead {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
-.person-card__role {
-  margin-top: 0.35rem;
-  color: var(--c-signal);
-  font-size: var(--fs-small);
-  font-weight: 600;
+.principle__facts {
+  margin-top: var(--space-m);
+  display: grid;
+  gap: var(--space-s);
 }
 
-.person-card__rule {
-  margin-block: var(--space-m);
-  border: 0;
+.principle__facts > div {
+  padding-top: var(--space-s);
   border-top: 1px solid var(--line-dark);
 }
 
-.person-card__note {
-  color: var(--text-on-dark-muted);
+.principle__facts dt {
+  color: var(--text-on-dark-dim);
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.principle__facts dd {
+  margin: 0.2rem 0 0;
   font-size: var(--fs-small);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  /* Pitkä sähköpostiosoite ei saa venyttää kapeaa sivupalstaa */
+  overflow-wrap: anywhere;
+}
+
+/* Puhelin ja sähköposti näyttävät samalta kuin kortin muut arvot – vain hover
+   ja näppäimistökohdistus paljastavat, että ne ovat linkkejä. */
+.principle__link {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.principle__link:hover,
+.principle__link:focus-visible {
+  color: var(--c-brand-bright);
+}
+
+/* --- Kuvagalleria ----------------------------------------------------------- */
+.gallery-grid {
+  margin-top: var(--space-l);
+  display: grid;
+  gap: var(--space-m);
+}
+
+.gallery-grid__media {
+  aspect-ratio: 4 / 3;
+}
+
+/* Pystykuva rajautuu ylempää, jotta henkilö ei jää kuva-alan ulkopuolelle. */
+.gallery-grid__media--portrait img {
+  object-position: center 30%;
 }
 
 /* --- Toimintatapa ----------------------------------------------------------- */
@@ -87,7 +118,7 @@
   width: 1.5rem;
   height: 3px;
   margin-bottom: var(--space-s);
-  background: var(--c-signal);
+  background: var(--c-brand-bright);
 }
 
 .values-item__text {
@@ -137,6 +168,25 @@
   /* Y-tunnus, ALV-numero ja päivämäärät pysyvät sarakkeessa suorassa */
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
+}
+
+/* Puhelin ja sähköposti näyttävät samalta kuin muutkin arvot – vain hover
+   ja näppäimistökohdistus paljastavat, että ne ovat linkkejä. */
+.details-row__link {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.details-row__link:hover,
+.details-row__link:focus-visible {
+  color: var(--c-brand-strong);
+}
+
+@media (min-width: 40rem) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 48rem) {

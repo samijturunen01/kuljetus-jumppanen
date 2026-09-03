@@ -1,10 +1,11 @@
 /* =============================================================================
    KULJETUS JUMPPANEN OY – visuaaliset perusarvot
-   Väri-inspiraatio: asfaltti, tienpinta, tiemerkinnät, pohjoiskarjalainen talvi.
+   Värit tulevat yrityksen tunnuksesta: sähkönsininen, musta ja valkoinen.
+   Tummat neutraalit (asfaltti) ovat taustoja, sininen on ainoa tehoväri.
    ============================================================================= */
 
 :root {
-  /* --- Neutraalit: asfaltti --------------------------------------------- */
+  /* --- Neutraalit: asfaltti / musta ------------------------------------- */
   --c-asphalt-900: #101215;
   --c-asphalt-800: #161a1f;
   --c-asphalt-700: #1e232a;
@@ -12,15 +13,29 @@
   --c-asphalt-500: #3a424c;
   --c-asphalt-400: #5b646f;
 
-  /* --- Neutraalit: valoisa puoli ---------------------------------------- */
-  --c-paper: #f5f3ef;
-  --c-paper-dim: #e8e5df;
-  --c-paper-line: #d9d5cd;
+  /* --- Neutraalit: valkoinen -------------------------------------------- */
+  /* Viileän neutraali valkoinen – lämmin sävy näyttäisi sinisen vieressä
+     kellertävältä. */
+  --c-white: #ffffff;
+  --c-paper: #f6f7f9;
+  --c-paper-dim: #eceef2;
+  --c-paper-line: #d8dce3;
 
-  /* --- Tehoväri: tiemerkintä / huomioväri ------------------------------- */
-  --c-signal: #ffc233;
-  --c-signal-strong: #f0ad10;
-  --c-signal-soft: rgba(255, 194, 51, 0.14);
+  /* --- Tunnusväri: sähkönsininen ---------------------------------------- */
+  /* --c-brand on mitattu tunnuksen JUMPPANEN-sanamerkistä. Valkoinen teksti
+     sen päällä täyttää WCAG AA:n (6,5:1), joten painikkeet ja täytöt käyttävät
+     sitä sellaisenaan. Tummalla taustalla sama sininen jää tekstinä liian
+     himmeäksi (2,9:1) – siellä käytetään --c-brand-bright-sävyä (5,4:1). */
+  --c-brand: #0846f5;
+  --c-brand-strong: #0535c4;
+  --c-brand-bright: #4d84ff;
+  --c-brand-soft: rgba(8, 70, 245, 0.08);
+
+  /* Tien keskiviiva. Kuuluu vain tie- ja autoanimaatioon (Road.css),
+     ei muuhun käyttöliittymään. Tunnusvärin tumman taustan sävy:
+     --c-brand jäisi asfaltilla liian himmeäksi (2,4:1), --c-brand-bright
+     erottuu selvästi (4,5:1). */
+  --c-road-marking: var(--c-brand-bright);
 
   /* --- Semanttiset roolit ----------------------------------------------- */
   --bg: var(--c-paper);
@@ -35,9 +50,10 @@
      --c-asphalt-400 on rakenneväri, ei tekstiväri. */
   --text-on-dark-dim: #949ca6;
   --line: var(--c-paper-line);
-  --line-dark: rgba(245, 243, 239, 0.14);
-  --accent: var(--c-signal);
-  --accent-ink: var(--c-asphalt-900);
+  --line-dark: rgba(246, 247, 249, 0.14);
+  --accent: var(--c-brand);
+  /* Teksti tunnusvärin päällä (painikkeet, valinta, hyppylinkki) */
+  --accent-ink: var(--c-white);
 
   /* --- Typografia -------------------------------------------------------- */
   /* Kaksi kirjasinta, molemmat matalan kontrastin groteskeja – sama sukulinja
@@ -90,6 +106,7 @@
   --dur: 260ms;
   --dur-slow: 700ms;
 
-  --focus-ring: 3px solid var(--c-signal);
+  /* Kirkkaampi sininen erottuu sekä vaalealta (3,5:1) että tummalta taustalta */
+  --focus-ring: 3px solid var(--c-brand-bright);
   --focus-offset: 3px;
 }

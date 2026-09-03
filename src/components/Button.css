@@ -39,16 +39,16 @@
   transform: translateY(1px);
 }
 
-/* --- Ensisijainen: huomioväri ------------------------------------------- */
+/* --- Ensisijainen: tunnusväri ------------------------------------------- */
 .btn--primary {
-  background: var(--c-signal);
-  border-color: var(--c-signal);
-  color: var(--c-asphalt-900);
+  background: var(--c-brand);
+  border-color: var(--c-brand);
+  color: var(--accent-ink);
 }
 
 .btn--primary:hover {
-  background: var(--c-signal-strong);
-  border-color: var(--c-signal-strong);
+  background: var(--c-brand-strong);
+  border-color: var(--c-brand-strong);
 }
 
 /* --- Toissijainen: ääriviiva vaalealla taustalla -------------------------- */

@@ -13,7 +13,7 @@
   height: 4px;
   background: repeating-linear-gradient(
     to right,
-    var(--c-signal) 0 44px,
+    var(--c-brand) 0 44px,
     transparent 44px 76px
   );
 }
@@ -30,14 +30,15 @@
   justify-items: start;
 }
 
+/* Tummalle taustalle tarkoitettu versio tunnuksesta (Logo.jsx, tone="light") */
 .site-footer__logo {
-  --logo-h: 48px;
+  --logo-h: 52px;
   margin-bottom: 0.25rem;
 }
 
 @media (min-width: 40rem) {
   .site-footer__logo {
-    --logo-h: 56px;
+    --logo-h: 60px;
   }
 }
 
@@ -53,7 +54,7 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--c-signal);
+  color: var(--c-brand-bright);
 }
 
 .site-footer__address {
@@ -65,7 +66,7 @@
 
 .site-footer__address a {
   color: var(--c-paper);
-  text-decoration-color: var(--c-signal);
+  text-decoration-color: var(--c-brand-bright);
 }
 
 .site-footer__meta {
@@ -91,7 +92,7 @@
 }
 
 .site-footer__links a:hover {
-  color: var(--c-signal);
+  color: var(--c-brand-bright);
 }
 
 .site-footer__bottom {

@@ -12,7 +12,7 @@
   height: 4px;
   background: repeating-linear-gradient(
     to right,
-    var(--c-signal) 0 44px,
+    var(--c-brand) 0 44px,
     transparent 44px 76px
   );
 }

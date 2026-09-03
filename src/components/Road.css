@@ -22,7 +22,7 @@
   transform: translateY(-50%);
   background: repeating-linear-gradient(
     to right,
-    var(--c-signal) 0 56px,
+    var(--c-road-marking) 0 56px,
     transparent 56px 112px
   );
   opacity: 0.9;

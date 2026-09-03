@@ -4,7 +4,7 @@
   background: var(--c-asphalt-900);
   color: var(--text-on-dark);
   padding-block: clamp(3rem, 8vw, 5.5rem) clamp(3rem, 7vw, 5rem);
-  border-bottom: 4px solid var(--c-signal);
+  border-bottom: 4px solid var(--c-brand);
 }
 
 .page-header__grid {
@@ -39,7 +39,7 @@
   width: 2.25rem;
   height: 3px;
   flex: none;
-  background: var(--c-signal);
+  background: var(--c-brand-bright);
 }
 
 .page-header__title {

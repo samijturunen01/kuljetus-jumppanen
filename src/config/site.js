@@ -14,7 +14,7 @@ export const site = {
   titleTemplate: `%s | ${business.name}`,
   defaultTitle: `${business.name} – tavarankuljetus Joensuusta`,
   defaultDescription:
-    'Kuljetus Jumppanen Oy on joensuulainen kuljetusyritys. Hoidamme tavarankuljetukset pakettiautolla. Kysy kuljetuksesta tai pyydä tarjous.',
+    'Kuljetus Jumppanen Oy on joensuulainen kuljetusyritys. Hoidamme tavarankuljetukset lava-autolla. Kysy kuljetuksesta tai pyydä tarjous.',
   ogImage: '/og-kuljetus-jumppanen.png',
   ogImageAlt: `${business.name} – tavarankuljetus Joensuusta`,
   /** Yrityksen tunnus rakenteista dataa varten (public-kansiossa, jotta

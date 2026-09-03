@@ -1,13 +1,13 @@
 {
   "name": "Kuljetus Jumppanen Oy",
   "short_name": "Kuljetus Jumppanen",
-  "description": "Joensuulainen tavarankuljetusyritys. Kuljetukset pakettiautolla.",
+  "description": "Joensuulainen tavarankuljetusyritys. Kuljetukset lava-autolla.",
   "lang": "fi",
   "start_url": "/kuljetus-jumppanen/",
   "scope": "/kuljetus-jumppanen/",
   "display": "standalone",
-  "background_color": "#101215",
-  "theme_color": "#101215",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/kuljetus-jumppanen/favicon-32.png",

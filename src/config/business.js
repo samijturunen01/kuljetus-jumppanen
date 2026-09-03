@@ -46,24 +46,39 @@ export const business = {
   },
 
   // --- Yhteydenottokanavat --------------------------------------------------
-  // Lisää arvo tähän, niin painikkeet, linkit ja rakenteinen data
-  // aktivoituvat automaattisesti koko sivustolla.
+  // Puhelin ja sähköposti näkyvät alatunnisteessa, yhteystietosivulla,
+  // tietosuojaselosteessa ja rakenteisessa datassa – muuta ne vain tähän.
+  // Tyhjä arvo (null) tarkoittaa "ei tiedossa", jolloin kanava jätetään
+  // käyttöliittymästä kokonaan pois.
   //
-  //   phone: { display: '040 123 4567', href: '+358401234567' },
-  //   email: 'roope@kuljetusjumppanen.fi',
+  // Pääkehotus ("Kysy kuljetuksesta") vie yhteystietosivulle, ei suoraan
+  // puheluun – ks. ctaTarget ja primaryContactAction() tiedoston lopussa.
   //
   contact: {
     /** @type {{display: string, href: string} | null} */
-    phone: null,
+    phone: { display: '045 264 6870', href: '+358452646870' },
     /** @type {string | null} */
-    email: null,
-    /** Näytetäänkö tarjouspyyntölomake. Vaatii toimivan taustajärjestelmän. */
-    formEnabled: false,
+    email: 'jumppanenroope@gmail.com',
+    /**
+     * Näytetäänkö yhteydenottolomake yhteystietosivulla.
+     * Lomake ilmestyy vasta, kun myös taustapalvelun osoite on täytetty
+     * tiedostoon src/config/forms.js – muuten sivustolla näkyisi lomake,
+     * joka ei oikeasti lähetä viestiä. Asennusohje: google-apps-script/.
+     */
+    formEnabled: true,
+    /**
+     * Mihin sivuston pääkehotus ("Kysy kuljetuksesta") johtaa.
+     *   'page'   – yhteystietosivulle, jossa puhelin ja sähköposti näkyvät
+     *              rinnakkain ja asiakas valitsee itselleen sopivan kanavan
+     *   'direct' – suoraan puhelin- tai sähköpostisovellukseen
+     * @type {'page' | 'direct'}
+     */
+    ctaTarget: 'page',
   },
 
   // --- Kalusto (vain varmistettu tieto) -------------------------------------
   fleet: {
-    description: 'Pakettiauto',
+    description: 'Lava-auto',
   },
 
   // --- Sosiaalinen media ----------------------------------------------------
@@ -84,20 +99,32 @@ export const hasEmail = Boolean(business.contact.email)
 export const hasDirectContact = hasPhone || hasEmail
 export const hasSocial = business.social.length > 0
 
-/** Ensisijainen yhteydenottotapa CTA-painikkeille. */
+/**
+ * Ensisijainen yhteydenottotapa CTA-painikkeille.
+ *
+ * Painike vie oletuksena yhteystietosivulle myös silloin, kun puhelin ja
+ * sähköposti ovat tiedossa: sivulla asiakas näkee molemmat kanavat ja voi
+ * valita itselleen sopivan. Puhelinnumero ja sähköposti näkyvät joka
+ * tapauksessa alatunnisteessa ja yhteystietosivulla suorina linkkeinä.
+ *
+ * Jos painikkeen halutaan avaavan suoraan puhelin- tai sähköpostisovellus,
+ * vaihda contact.ctaTarget arvoon 'direct'.
+ */
 export function primaryContactAction() {
-  if (hasPhone) {
-    return {
-      type: 'phone',
-      label: `Soita ${business.contact.phone.display}`,
-      href: `tel:${business.contact.phone.href}`,
+  if (business.contact.ctaTarget === 'direct') {
+    if (hasPhone) {
+      return {
+        type: 'phone',
+        label: `Soita ${business.contact.phone.display}`,
+        href: `tel:${business.contact.phone.href}`,
+      }
     }
-  }
-  if (hasEmail) {
-    return {
-      type: 'email',
-      label: 'Lähetä sähköpostia',
-      href: `mailto:${business.contact.email}`,
+    if (hasEmail) {
+      return {
+        type: 'email',
+        label: 'Lähetä sähköpostia',
+        href: `mailto:${business.contact.email}`,
+      }
     }
   }
   return { type: 'page', label: 'Kysy kuljetuksesta', href: '/yhteystiedot' }

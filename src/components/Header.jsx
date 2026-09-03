@@ -56,7 +56,7 @@ export default function Header() {
     <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="site-header__inner container">
         <Link to="/" className="brand" aria-label={`${business.name} – etusivu`}>
-          <Logo className="brand__logo" />
+          <Logo tone="dark" className="brand__logo" />
         </Link>
 
         <nav className="site-nav" aria-label="Päävalikko">

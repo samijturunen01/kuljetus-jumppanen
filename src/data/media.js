@@ -1,20 +1,12 @@
 /**
  * Kuvamateriaali.
  *
- * Sivustolla EI käytetä tällä hetkellä valokuvia. Kaikki visuaalisuus on
- * sivuston omaa grafiikkaa (SVG), jotta mikään kuva ei anna virheellistä
- * kuvaa yrityksen kalustosta tai toiminnan laajuudesta.
+ * Valokuvat sijaitsevat kansiossa src/assets/ ja tuodaan tänne importilla.
+ * <Media />-komponentti lukee tästä tiedostosta, joten kuvan vaihtaminen
+ * onnistuu muuttamatta sivukomponentteja.
  *
- * KUN OIKEAT VALOKUVAT SAADAAN:
- *   1. Lisää kuvatiedostot kansioon  src/assets/  (mieluiten .webp tai .avif)
- *   2. Tuo ne tänne importilla ja täytä `src`, `width`, `height` ja `alt`
- *   3. Sivusto vaihtaa grafiikan valokuvaan automaattisesti –
- *      <Media />-komponentti hoitaa vaihdon, mitään muuta ei tarvitse muuttaa.
- *
- * Esimerkki:
- *   import vanHero from '../assets/pakettiauto-hero.webp'
- *   hero: { src: vanHero, width: 1600, height: 1067,
- *           alt: 'Kuljetus Jumppanen Oy:n pakettiauto Joensuussa' }
+ * Ne kohdat, joissa `src` on null, käyttävät edelleen sivuston omaa
+ * SVG-grafiikkaa (ks. <Media />:n `fallback`).
  *
  * Kentät:
  *   src    – kuvatiedosto (null = käytetään sivuston omaa grafiikkaa)
@@ -22,6 +14,11 @@
  *   width  – alkuperäinen leveys pikseleinä (estää layout shiftin)
  *   height – alkuperäinen korkeus pikseleinä
  */
+
+import ownerPhoto from '../assets/roope-jumppanen.webp'
+import truckSide from '../assets/lava-auto-sivulta.webp'
+import truckFront from '../assets/lava-auto-edesta.webp'
+import truckLogo from '../assets/lava-auto-logo.webp'
 
 /** @typedef {{src: string|null, alt: string, width?: number, height?: number}} MediaItem */
 
@@ -38,6 +35,35 @@ export const media = {
   company: {
     src: null,
     alt: '',
+  },
+
+  /** Yrittäjä Roope Jumppanen lava-auton edessä. */
+  owner: {
+    src: ownerPhoto,
+    alt: 'Yrittäjä Roope Jumppanen lava-autonsa vieressä',
+    width: 1457,
+    height: 1600,
+  },
+  /** Lava-auto sivusta kuvattuna. */
+  truckSide: {
+    src: truckSide,
+    alt: 'Kuljetus Jumppanen Oy:n lava-auto sivusta kuvattuna',
+    width: 1600,
+    height: 1052,
+  },
+  /** Lava-auto edestä, perässä peräkärry. */
+  truckFront: {
+    src: truckFront,
+    alt: 'Lava-auto ja peräkärry pysäköintialueella',
+    width: 1600,
+    height: 1351,
+  },
+  /** Lähikuva auton kyljestä ja yrityksen logosta. */
+  truckLogo: {
+    src: truckLogo,
+    alt: 'Kuljetus Jumppanen Oy:n logo lava-auton ovessa',
+    width: 1600,
+    height: 1503,
   },
 }
 

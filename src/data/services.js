@@ -18,7 +18,7 @@ export const services = [
     number: '01',
     title: 'Tavarankuljetukset',
     summary:
-      'Hoidamme tavaroiden kuljetukset pakettiautolla. Kerro mitä on kuljetettavana, mistä ja minne – sovitaan kuljetus sen mukaan.',
+      'Hoidamme tavaroiden kuljetukset lava-autolla. Kerro mitä on kuljetettavana, mistä ja minne – sovitaan kuljetus sen mukaan.',
     points: ['Nouto ja toimitus sovitusti', 'Tavarat käsitellään huolellisesti'],
   },
   {

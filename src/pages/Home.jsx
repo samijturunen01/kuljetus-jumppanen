@@ -3,18 +3,19 @@ import Seo from '../components/Seo.jsx'
 import Button from '../components/Button.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Media from '../components/Media.jsx'
-import VanGraphic from '../components/VanGraphic.jsx'
+import VehicleGraphic from '../components/VehicleGraphic.jsx'
 import Road from '../components/Road.jsx'
 import CtaBand from '../components/CtaBand.jsx'
 import { business, primaryContactAction } from '../config/business.js'
 import { services, promises } from '../data/services.js'
+import { pricingSummary } from '../data/pricing.js'
 import { organizationSchema, websiteSchema } from '../lib/structuredData.js'
 import './Home.css'
 
 const facts = [
   { label: 'Kotipaikka', value: 'Joensuu' },
   { label: 'Toimiala', value: 'Tieliikenteen tavarankuljetus' },
-  { label: 'Kalusto', value: 'Pakettiauto' },
+  { label: 'Kalusto', value: business.fleet.description },
   { label: 'Y-tunnus', value: business.businessId },
 ]
 
@@ -25,7 +26,7 @@ export default function Home() {
     <>
       <Seo
         title="Tavarankuljetus Joensuusta"
-        description="Kuljetus Jumppanen Oy on joensuulainen kuljetusyritys. Hoidamme tavarankuljetukset pakettiautolla. Kysy kuljetuksesta tai pyydä tarjous."
+        description="Kuljetus Jumppanen Oy on joensuulainen kuljetusyritys. Hoidamme tavarankuljetukset lava-autolla. Kysy kuljetuksesta tai pyydä tarjous."
         path="/"
         jsonLd={[organizationSchema(), websiteSchema()]}
       />
@@ -47,7 +48,7 @@ export default function Home() {
 
           <p className="hero__lead">
             {business.name} on joensuulainen tavarankuljetusyritys. Hoidamme
-            kuljetukset pakettiautolla ja sovimme yksityiskohdat suoraan kanssasi.
+            kuljetukset lava-autolla ja sovimme yksityiskohdat suoraan kanssasi.
           </p>
 
           <div className="btn-row hero__actions">
@@ -73,7 +74,7 @@ export default function Home() {
             name="hero"
             priority
             className="hero__media"
-            fallback={<VanGraphic className="hero__van" />}
+            fallback={<VehicleGraphic className="hero__vehicle" />}
           />
           <Road />
         </div>
@@ -129,6 +130,46 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ================= Hinnat =================
+          Tiivistelmä hinnoittelun periaatteesta. Varsinainen hinnasto on
+          omalla sivullaan – tässä ei toisteta painoluokkien hintataulukkoa.
+          Luvut tulevat tiedostosta src/data/pricing.js. */}
+      <section className="section section--tint home-pricing" aria-labelledby="pricing-summary-title">
+        <div className="container">
+          <Reveal>
+            <p className="eyebrow">{pricingSummary.eyebrow}</p>
+            <h2 id="pricing-summary-title" className="section-title">
+              {pricingSummary.title}
+            </h2>
+            <p className="lead home-pricing__intro">{pricingSummary.lead}</p>
+          </Reveal>
+
+          <ul className="price-highlights">
+            {pricingSummary.highlights.map((item, index) => (
+              <Reveal as="li" className="price-highlight" key={item.id} delay={index * 70}>
+                <p className="price-highlight__label">{item.label}</p>
+                <p className="price-highlight__value">
+                  <span className="price-highlight__figure">{item.figure}</span>
+                  <span className="price-highlight__unit">{item.unit}</span>
+                </p>
+                <p className="price-highlight__text">{item.text}</p>
+              </Reveal>
+            ))}
+          </ul>
+
+          <p className="home-pricing__note">{pricingSummary.vatNote}</p>
+
+          <div className="home-pricing__actions">
+            <Button to="/hinnasto" variant="primary">
+              {pricingSummary.ctaLabel}
+            </Button>
+            <Link to="/hinnasto" className="text-link">
+              {pricingSummary.linkLabel}
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ================= Miksi ================= */}
       <section className="section section--dark home-why" aria-labelledby="why-title">
         <div className="container">
@@ -162,7 +203,7 @@ export default function Home() {
               <p>
                 {business.name} on {business.foundingText} perustettu joensuulainen
                 yritys. Toimintaa pyörittää yrittäjä {business.owner.shortName}, joka
-                hoitaa kuljetukset omalla pakettiautollaan.
+                hoitaa kuljetukset omalla lava-autollaan.
               </p>
               <p>
                 Uusi yritys tarkoittaa käytännössä sitä, että jokainen kuljetus on
@@ -176,25 +217,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal className="home-about__aside" delay={120}>
-            <div className="principle">
-              <p className="principle__lead">
-                Sovitaan kuljetuksesta selkeästi ja hoidetaan se sitten sovitusti.
-              </p>
-              <dl className="principle__facts">
-                <div>
-                  <dt>Yrittäjä</dt>
-                  <dd>{business.owner.name}</dd>
-                </div>
-                <div>
-                  <dt>Kotipaikka</dt>
-                  <dd>{business.address.city}</dd>
-                </div>
-                <div>
-                  <dt>Perustettu</dt>
-                  <dd>2026</dd>
-                </div>
-              </dl>
-            </div>
+            <Media name="owner" className="home-about__portrait" />
           </Reveal>
         </div>
       </section>

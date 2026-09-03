@@ -2,7 +2,9 @@ import Seo from '../components/Seo.jsx'
 import Reveal from '../components/Reveal.jsx'
 import PageHeader from '../components/PageHeader.jsx'
 import ContactChannels from '../components/ContactChannels.jsx'
-import { business, hasDirectContact } from '../config/business.js'
+import ContactForm from '../components/ContactForm.jsx'
+import { business, hasDirectContact, hasEmail, hasPhone } from '../config/business.js'
+import { isContactFormEnabled } from '../config/forms.js'
 import { breadcrumbSchema, organizationSchema } from '../lib/structuredData.js'
 import './Contact.css'
 
@@ -40,12 +42,23 @@ export default function Contact() {
         }
       />
 
-      <section className="section contact-main">
+      <section className="section contact-main" id="lomake">
         <div className="container contact-main__inner">
-          {/* --- Yhteydenotto --- */}
+          {/* --- Yhteydenotto: lomake (tai suorat kanavat, jos lomaketta ei
+              ole otettu käyttöön tiedostossa src/config/forms.js) --- */}
           <Reveal className="contact-main__primary">
             <h2 className="contact-heading">Yhteydenotto</h2>
-            <ContactChannels />
+            {isContactFormEnabled ? (
+              <>
+                <p className="contact-lead">
+                  Täytä lomake, niin vastaamme sähköpostitse tai soitamme. Tähdellä
+                  merkityt kentät ovat pakollisia.
+                </p>
+                <ContactForm />
+              </>
+            ) : (
+              <ContactChannels />
+            )}
 
             <h2 className="contact-heading contact-heading--spaced">
               Näin saat nopeimmin vastauksen
@@ -76,6 +89,28 @@ export default function Contact() {
                   {business.address.country}
                 </address>
               </div>
+
+              {hasPhone && (
+                <div className="info-card__block">
+                  <h3 className="info-card__label">Puhelin</h3>
+                  <p className="info-card__value">
+                    <a className="info-card__link" href={`tel:${business.contact.phone.href}`}>
+                      {business.contact.phone.display}
+                    </a>
+                  </p>
+                </div>
+              )}
+
+              {hasEmail && (
+                <div className="info-card__block">
+                  <h3 className="info-card__label">Sähköposti</h3>
+                  <p className="info-card__value">
+                    <a className="info-card__link" href={`mailto:${business.contact.email}`}>
+                      {business.contact.email}
+                    </a>
+                  </p>
+                </div>
+              )}
 
               <div className="info-card__block">
                 <h3 className="info-card__label">Y-tunnus</h3>

@@ -13,7 +13,7 @@
   font-weight: 700;
   letter-spacing: 0.28em;
   font-variant-numeric: tabular-nums;
-  color: var(--c-signal);
+  color: var(--c-brand-bright);
 }
 
 .notfound__title {
@@ -57,5 +57,5 @@
 }
 
 .notfound__nav a:hover {
-  color: var(--c-signal);
+  color: var(--c-brand-bright);
 }

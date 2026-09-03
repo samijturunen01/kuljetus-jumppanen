@@ -2,14 +2,24 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--c-asphalt-900);
-  color: var(--text-on-dark);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--dur) var(--ease);
+  background: var(--c-white);
+  color: var(--text);
+  transition: box-shadow var(--dur) var(--ease);
+}
+
+/* Tunnusvärinen viiva ylätunnisteen alareunassa – sama sininen kuin
+   tunnuksessa. Erottaa vaalean palkin tummasta hero-osasta. */
+.site-header::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--c-brand);
 }
 
 .site-header.is-scrolled {
-  border-bottom-color: var(--line-dark);
+  box-shadow: 0 4px 18px rgba(16, 18, 21, 0.1);
 }
 
 .site-header__inner {
@@ -29,10 +39,11 @@
   color: inherit;
 }
 
-/* Vaalea versio tunnuksesta – ylätunniste on aina tumma.
-   Korkeus jättää palkkiin noin 14 px ilmaa ylä- ja alapuolelle. */
+/* Tunnus valkoisella pohjalla, kuten se on suunniteltu. Tunnus on leveä
+   (2,6:1), joten korkeus pidetään palkin sallimissa rajoissa: mobiilissa
+   jää noin 12 px ilmaa ylä- ja alapuolelle. */
 .brand__logo {
-  --logo-h: 44px;
+  --logo-h: 48px;
 }
 
 /* --- Työpöytävalikko -------------------------------------------------------- */
@@ -52,7 +63,7 @@
   position: relative;
   display: inline-block;
   padding: 0.5rem 0;
-  color: var(--text-on-dark-muted);
+  color: var(--text-muted);
   font-family: var(--font-display);
   font-size: 0.9375rem;
   font-weight: 600;
@@ -67,7 +78,7 @@
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: var(--c-signal);
+  background: var(--c-brand);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--dur) var(--ease);
@@ -75,7 +86,7 @@
 
 .site-nav__link:hover,
 .site-nav__link.is-active {
-  color: var(--c-paper);
+  color: var(--text);
 }
 
 .site-nav__link:hover::after,
@@ -154,7 +165,7 @@
   position: fixed;
   inset: 4.5rem 0 0;
   z-index: 99;
-  background: var(--c-asphalt-900);
+  background: var(--c-white);
   overflow-y: auto;
   overscroll-behavior: contain;
 }
@@ -170,11 +181,11 @@
 .mobile-nav__list {
   display: grid;
   gap: 2px;
-  border-top: 1px solid var(--line-dark);
+  border-top: 1px solid var(--line);
 }
 
 .mobile-nav__list li {
-  border-bottom: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line);
 }
 
 .mobile-nav__link {
@@ -183,7 +194,7 @@
   gap: 1rem;
   /* Iso kosketuskohde */
   padding: 1.15rem 0;
-  color: var(--c-paper);
+  color: var(--text);
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 7vw, 2.25rem);
   font-weight: 700;
@@ -192,7 +203,7 @@
 }
 
 .mobile-nav__index {
-  color: var(--text-on-dark-dim);
+  color: var(--text-muted);
   font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
@@ -201,11 +212,11 @@
 }
 
 .mobile-nav__link.is-active {
-  color: var(--c-signal);
+  color: var(--c-brand);
 }
 
 .mobile-nav__link.is-active .mobile-nav__index {
-  color: var(--c-signal);
+  color: var(--c-brand);
 }
 
 .mobile-nav__footer {
@@ -220,7 +231,7 @@
 }
 
 .mobile-nav__meta {
-  color: var(--text-on-dark-muted);
+  color: var(--text-muted);
   font-size: var(--fs-small);
 }
 
@@ -254,7 +265,7 @@
   }
 
   .brand__logo {
-    --logo-h: 56px;
+    --logo-h: 64px;
   }
 
   .nav-toggle {

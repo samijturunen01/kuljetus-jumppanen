@@ -5,7 +5,7 @@ import './Media.css'
  * Kuvapaikka, joka näyttää valokuvan jos sellainen on määritelty
  * tiedostossa src/data/media.js – muutoin sivuston omaa grafiikkaa.
  *
- * Näin oikeat kuvat Roopen pakettiautosta voidaan lisätä myöhemmin
+ * Näin oikeat kuvat yrityksen lava-autosta voidaan lisätä myöhemmin
  * koskematta yhteenkään sivukomponenttiin.
  *
  * @param {{ name: keyof typeof media, fallback: React.ReactNode,

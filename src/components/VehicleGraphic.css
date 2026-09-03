@@ -1,4 +1,4 @@
-.van {
+.vehicle {
   width: 100%;
   height: auto;
   color: var(--c-paper);
@@ -7,51 +7,51 @@
   overflow: hidden;
 }
 
-/* Kori ja ohjaamo. Kulmien pyöristys tehdään pyöreällä viivaliitoksella:
-   polku kulkee kulmien keskipisteiden kautta ja viiva levittää muodon
-   ulospäin, jolloin jokainen kulma pyöristyy 10 yksikön säteellä. */
-.van__panel {
+/* Ohjaamo ja lavan etulaita. Kulmien pyöristys tehdään pyöreällä
+   viivaliitoksella: polku kulkee kulmien keskipisteiden kautta ja viiva
+   levittää muodon ulospäin, jolloin jokainen kulma pyöristyy 10 yksikön
+   säteellä. */
+.vehicle__panel {
   fill: currentColor;
   stroke: currentColor;
   stroke-width: 20;
   stroke-linejoin: round;
 }
 
+/* Lava ja runko: pyöreäpäiset palkit, paksuus annetaan elementissä */
+.vehicle__bar {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+}
+
 /* Vauhtiviivat ovat samaa siluettia kuin kori – paksut, pyöreäpäiset palkit */
-.van__streaks {
+.vehicle__streaks {
   fill: none;
   stroke: currentColor;
   stroke-width: 20.5;
   stroke-linecap: round;
 }
 
-/* Rengas: paksu kehä, keskiö jää auki kuten tunnuksessa */
-.van__tyre {
+/* Rengas: paksu kehä, keskiö jää auki */
+.vehicle__tyre {
   fill: none;
   stroke: currentColor;
   stroke-width: 13.4;
 }
 
-/* Kylkiteksti. Piirtyy maskiin, joten se näkyy korista leikattuna aukkona.
-   textLength pitää tekstin tunnuksen levyisenä myös eri kirjasimilla. */
-.van__wordmark {
-  font-family: var(--font-display);
-  font-size: 34px;
-  font-weight: 800;
-}
-
 /* Hyvin hienovarainen keinunta – pysähtyy jos käyttäjä on rajoittanut liikettä */
 @media (prefers-reduced-motion: no-preference) {
-  .van {
-    animation: van-drift 6s var(--ease) infinite;
+  .vehicle {
+    animation: vehicle-drift 6s var(--ease) infinite;
   }
 
-  .van__speed {
-    animation: van-speed 2.4s linear infinite;
+  .vehicle__speed {
+    animation: vehicle-speed 2.4s linear infinite;
   }
 }
 
-@keyframes van-drift {
+@keyframes vehicle-drift {
   0%,
   100% {
     transform: translate3d(0, 0, 0);
@@ -61,7 +61,7 @@
   }
 }
 
-@keyframes van-speed {
+@keyframes vehicle-speed {
   0% {
     opacity: 0.35;
     transform: translateX(10px);

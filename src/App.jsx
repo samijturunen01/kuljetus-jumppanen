@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import SiteLayout from './layouts/SiteLayout.jsx'
 import Home from './pages/Home.jsx'
 import Services from './pages/Services.jsx'
+import Pricing from './pages/Pricing.jsx'
 import Company from './pages/Company.jsx'
 import Contact from './pages/Contact.jsx'
 import Privacy from './pages/Privacy.jsx'
@@ -27,6 +28,7 @@ export default function App() {
         <Route element={<SiteLayout />}>
           <Route index element={<Home />} />
           <Route path="kuljetuspalvelut" element={<Services />} />
+          <Route path="hinnasto" element={<Pricing />} />
           <Route path="yritys" element={<Company />} />
           <Route path="yhteystiedot" element={<Contact />} />
           <Route path="tietosuoja" element={<Privacy />} />
