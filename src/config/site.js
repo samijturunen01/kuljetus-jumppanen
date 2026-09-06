@@ -6,9 +6,9 @@ import { business } from './business.js'
 
 export const site = {
   /** Ilman kauttaviivaa lopussa. Käytetään canonical- ja OG-osoitteissa.
-      Kun oma verkkotunnus otetaan käyttöön, vaihda tähän
-      'https://kuljetusjumppanen.fi' (ks. README, julkaisuohje). */
-  siteUrl: 'https://samijturunen01.github.io/kuljetus-jumppanen',
+      Samat osoitteet ovat myös tiedostoissa index.html, public/sitemap.xml
+      ja public/robots.txt – päivitä ne yhtä aikaa. */
+  siteUrl: 'https://kuljetusjumppanen.fi',
   locale: 'fi_FI',
   lang: 'fi',
   titleTemplate: `%s | ${business.name}`,

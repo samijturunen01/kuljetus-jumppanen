@@ -194,31 +194,45 @@ Repossa on valmis työnkulku `.github/workflows/deploy.yml`, joka rakentaa ja
 julkaisee sivuston `main`-haaraan tehdyistä muutoksista. Ota Pages käyttöön
 repon asetuksista: **Settings → Pages → Source: GitHub Actions**.
 
-### Nykyinen kokoonpano: projektisivu
+### Nykyinen kokoonpano: oma verkkotunnus
 
-Sivusto julkaistaan osoitteessa
-**https://samijturunen01.github.io/kuljetus-jumppanen/**, ja repo on
+Sivusto julkaistaan osoitteessa **https://kuljetusjumppanen.fi/**, ja repo on
 konfiguroitu sitä varten:
 
 | Missä | Asetus |
 | --- | --- |
-| `.github/workflows/deploy.yml` | `VITE_BASE: /kuljetus-jumppanen/` |
-| `public/404.html` | `pathSegmentsToKeep = 1` |
-| `src/config/site.js` | `siteUrl` julkaisuosoitteeseen |
+| `public/CNAME` | `kuljetusjumppanen.fi` |
+| `.github/workflows/deploy.yml` | ei `VITE_BASE`-arvoa (sivusto juuressa) |
+| `public/404.html` | `pathSegmentsToKeep = 0` |
+| `src/config/site.js` | `siteUrl: 'https://kuljetusjumppanen.fi'` |
 | `public/sitemap.xml`, `public/robots.txt` | samat osoitteet |
-| `public/site.webmanifest` | `start_url`, `scope` ja kuvakkeet base-polulla |
+| `public/site.webmanifest` | `start_url`, `scope` ja kuvakkeet juuressa (`/`) |
 | `index.html` | canonical, Open Graph ja rakenteinen data |
 
 Reitityksen `basename` tulee automaattisesti Viten `BASE_URL`-arvosta
 (`src/App.jsx`), joten sovelluskoodiin ei tarvitse koskea.
 
-### Vaihto omaan verkkotunnukseen (esim. kuljetusjumppanen.fi)
+### Verkkotunnuksen DNS-tietueet
 
-1. Lisää `public/CNAME`, jossa on pelkkä verkkotunnus
-2. Poista `VITE_BASE` työnkulusta (`deploy.yml`)
-3. Palauta `public/404.html`:ssä `pathSegmentsToKeep` arvoon `0`
-4. Palauta `public/site.webmanifest`:ssa `start_url`, `scope` ja kuvakepolut
-   juureen (`/`)
+Verkkotunnus osoitetaan GitHub Pagesiin rekisteröijän DNS-asetuksista:
+
+| Tyyppi | Nimi | Arvo |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
+| AAAA | `@` | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
+| CNAME | `www` | `samijturunen01.github.io.` |
+
+GitHubissa: **Settings → Pages → Custom domain** → `kuljetusjumppanen.fi` →
+Save, ja kun varmennus on valmis, rastita **Enforce HTTPS**. Varmenteen
+myöntäminen kestää tyypillisesti muutamasta minuutista tuntiin.
+
+### Paluu projektisivulle (jos verkkotunnus joskus poistuu käytöstä)
+
+1. Poista `public/CNAME`
+2. Lisää `VITE_BASE: /kuljetus-jumppanen/` työnkulkuun (`deploy.yml`)
+3. Aseta `public/404.html`:ssä `pathSegmentsToKeep` arvoon `1`
+4. Lisää base-polku `public/site.webmanifest`:n `start_url`-, `scope`- ja
+   kuvakepolkuihin
 5. Vaihda osoitteet yllä olevan taulukon muista tiedostoista
 
 ### Reititys ja sivun päivittäminen

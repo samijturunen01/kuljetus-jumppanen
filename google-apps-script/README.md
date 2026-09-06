@@ -15,10 +15,10 @@ Koodi on tiedostossa [`Code.gs`](Code.gs). Se kopioidaan Apps Script
 1. Avaa <https://www.google.com/recaptcha/admin/create>
 2. **Label:** esim. `kuljetusjumppanen.fi`
 3. **Type:** valitse **reCAPTCHA v3** (Score based)
-4. **Domains:** lisää molemmat osoitteet, joissa lomake toimii:
-   - `samijturunen01.github.io`
+4. **Domains:** lisää kaikki osoitteet, joissa lomake toimii:
+   - `kuljetusjumppanen.fi`
+   - `www.kuljetusjumppanen.fi`
    - `localhost` (kehityskonetta varten)
-   - myöhemmin oma verkkotunnus, esim. `kuljetusjumppanen.fi`
 5. Hyväksy ehdot ja tallenna. Saat kaksi avainta:
 
 | Avain | Mihin se tulee | Julkinen? |
