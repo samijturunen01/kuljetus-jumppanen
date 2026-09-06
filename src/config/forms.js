@@ -31,7 +31,7 @@ import { business } from './business.js'
 const ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbyt8W8UEnAFLRzloMrjvEqbBTEIG-8ugkU-N7BQ2pIvCLQdEHk-cRK_zkleojgE3zQwPQ/exec'
 
 /** reCAPTCHA v3 -sivustoavain, muotoa '6Lc...' */
-const RECAPTCHA_SITE_KEY = ''
+const RECAPTCHA_SITE_KEY = '6LfAWqwtAAAAAOIE3sziXyiJWt8Pr0YcG0gQsn4k'
 
 /* Arvot voi antaa myös ympäristömuuttujina (esim. GitHub Actions ->
    repon Variables). Tyhjä ympäristömuuttuja ei ohita yllä olevaa arvoa. */
