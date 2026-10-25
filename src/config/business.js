@@ -58,7 +58,7 @@ export const business = {
     /** @type {{display: string, href: string} | null} */
     phone: { display: '045 264 6870', href: '+358452646870' },
     /** @type {string | null} */
-    email: 'jumppanenroope@gmail.com',
+    email: 'roope@kuljetusjumppanen.fi',
     /**
      * Näytetäänkö yhteydenottolomake yhteystietosivulla.
      * Lomake ilmestyy vasta, kun myös taustapalvelun osoite on täytetty

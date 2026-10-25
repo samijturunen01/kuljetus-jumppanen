@@ -29,7 +29,7 @@ automaattisesti.
 ```js
 contact: {
   phone: { display: '045 264 6870', href: '+358452646870' },
-  email: 'jumppanenroope@gmail.com',
+  email: 'roope@kuljetusjumppanen.fi',
   formEnabled: true,
   ctaTarget: 'page',
 },

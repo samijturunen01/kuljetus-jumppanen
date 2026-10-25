@@ -43,7 +43,7 @@ Koodi on tiedostossa [`Code.gs`](Code.gs). Se kopioidaan Apps Script
 
 | Nimi | Arvo | Pakollinen |
 | --- | --- | --- |
-| `RECIPIENT_EMAIL` | minne viestit lähetetään, esim. `jumppanenroope@gmail.com` | kyllä |
+| `RECIPIENT_EMAIL` | minne viestit lähetetään, esim. `roope@kuljetusjumppanen.fi` | kyllä |
 | `RECAPTCHA_SECRET` | reCAPTCHAn salainen avain | ks. alla |
 | `SCORE_THRESHOLD` | pisteraja `0`–`1`, oletus `0.5` | ei |
 | `SHEET_ID` | Google Sheets -taulukon tunnus, jos viestit halutaan myös taulukkoon | ei |
